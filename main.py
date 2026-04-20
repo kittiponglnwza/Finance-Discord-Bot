@@ -38,6 +38,7 @@ COGS = [
     "src.cogs.portfolio",
     "src.cogs.news",
     "src.cogs.report",
+    "src.cogs.analyze",
 ]
 
 

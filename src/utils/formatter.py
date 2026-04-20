@@ -12,7 +12,8 @@ import discord
 
 
 def _now() -> datetime:
-    return datetime.now(timezone.utc)
+    # อัปเดตให้ใช้ discord.utils.utcnow() เพื่อความเสถียรของเวลาใน Discord
+    return discord.utils.utcnow()
 
 
 def _price_color(change_pct: float) -> discord.Color:
@@ -179,40 +180,53 @@ def build_report_embed(
 
 def build_help_embed() -> discord.Embed:
     embed = discord.Embed(
-        title="📈 Finance Bot — Commands",
-        description="Your personal investment assistant on Discord.",
-        color=discord.Color.blue(),
+        title="✨ Finance Bot — Command Center",
+        description="ผู้ช่วยส่วนตัวสำหรับการลงทุนและจัดการพอร์ตของคุณบน Discord 🚀",
+        color=discord.Color.brand_green(),
         timestamp=_now(),
     )
+
     embed.add_field(
-        name="🔔 Alerts",
+        name="📊 Analysis & Market",
         value=(
-            "`!alert SYMBOL PRICE upper|lower` — Price alert\n"
-            "`!alert SYMBOL PCT%` — % move alert\n"
-            "`!alerts` — List your active alerts\n"
-            "`!removealert ID` — Remove an alert by ID"
+            "> `!analyze SYMBOL` — วิเคราะห์หุ้นเชิงลึก (Technical, Big Money)\n"
+            "> `!report` — สรุปรายงานตลาดช่วงเช้าของคุณ"
         ),
         inline=False,
     )
+
     embed.add_field(
-        name="💼 Portfolio",
+        name="💼 Portfolio Management",
         value=(
-            "`!addstock SYMBOL QTY COST` — Add / top-up a holding\n"
-            "`!removestock SYMBOL` — Remove a holding\n"
-            "`!port` — Portfolio summary with live P/L"
+            "> `!port` — สรุปพอร์ตโฟลิโอพร้อมดู P/L (กำไร/ขาดทุน) แบบ Real-time\n"
+            "> `!addstock SYMBOL QTY COST` — เพิ่มหุ้น หรือ ซื้อถัวเฉลี่ย\n"
+            "> `!removestock SYMBOL` — ลบหุ้นออกจากพอร์ต"
         ),
         inline=False,
     )
+
     embed.add_field(
-        name="📰 News & Reports",
+        name="🔔 Smart Alerts",
         value=(
-            "`!news` — News for all holdings with AI sentiment\n"
-            "`!news SYMBOL` — News for a specific symbol\n"
-            "`!report` — Generate your morning market report"
+            "> `!alert SYMBOL PRICE upper|lower` — เตือนเมื่อราคา ทะลุขึ้น/ร่วงลง\n"
+            "> `!alert SYMBOL PCT%` — เตือนเมื่อราคาสวิงกี่ %\n"
+            "> `!alerts` — ดูรายการแจ้งเตือนที่ทำงานอยู่\n"
+            "> `!removealert ID` — ยกเลิกการแจ้งเตือนตาม ID"
         ),
         inline=False,
     )
+
+    embed.add_field(
+        name="📰 News & AI Sentiment",
+        value=(
+            "> `!news` — สรุปข่าวหุ้นในพอร์ต พร้อมวิเคราะห์อารมณ์ตลาดด้วย AI\n"
+            "> `!news SYMBOL` — ค้นหาข่าวเฉพาะหุ้นตัวนั้นๆ"
+        ),
+        inline=False,
+    )
+
     embed.set_footer(
-        text="Prices refresh every 60 s  •  AI limit: 5 calls/user/day"
+        text="💡 พิมพ์คำสั่งด้านบนเพื่อใช้งาน • ราคาอัปเดตทุกๆ 60 วินาที • AI limit: 5 ครั้ง/วัน"
     )
+    
     return embed
