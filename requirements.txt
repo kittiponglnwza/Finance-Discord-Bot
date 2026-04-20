@@ -1,0 +1,26 @@
+# Discord
+discord.py>=2.3.2
+
+# Market data
+yfinance>=0.2.40
+
+# AI
+openai>=1.30.0
+
+# HTTP client
+aiohttp>=3.9.5
+
+# Database
+aiosqlite>=0.20.0
+
+# Scheduling
+APScheduler>=3.10.4
+
+# News (RSS fallback)
+feedparser>=6.0.11
+
+# Logging
+loguru>=0.7.2
+
+# Env
+python-dotenv>=1.0.1
