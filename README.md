@@ -36,7 +36,7 @@
 ### 1. Clone repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Finance-Discord-Bot.git
+git clone https://github.com/kittiponglnwza/Finance-Discord-Bot.git
 cd Finance-Discord-Bot
 ```
 
