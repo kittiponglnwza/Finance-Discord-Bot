@@ -24,3 +24,5 @@ loguru>=0.7.2
 
 # Env
 python-dotenv>=1.0.1google-generativeai 
+ 
+google-generativeai
